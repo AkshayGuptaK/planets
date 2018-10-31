@@ -1,12 +1,11 @@
 // setup canvas
-
 var canvas = document.querySelector('canvas')
 var ctx = canvas.getContext('2d')
 
 var width = canvas.width = window.innerWidth
 var height = canvas.height = window.innerHeight
 
-// function to generate random number
+// Math helpter functions
 
 function random(min,max) {
   var num = Math.floor(Math.random()*(max-min)) + min
@@ -24,7 +23,6 @@ function translateCenter(coords) {
 }
 
 // define Planet constructor
-
 function Planet(distance, angle, size, period, color) {
   this.distance = distance
   this.angle = angle
@@ -34,7 +32,6 @@ function Planet(distance, angle, size, period, color) {
 }
 
 // define planet draw method
-
 Planet.prototype.draw = function() {
   ctx.beginPath()
   ctx.fillStyle = this.color
@@ -44,34 +41,28 @@ Planet.prototype.draw = function() {
 }
 
 // define planet update method
-
 Planet.prototype.update = function() {
    this.angle += 2*Math.PI/this.period
 }
 
 // define array to store planets and data
 var planets = []
-var sizes = []
-var distances = []
-var periods = []
 var colors = ['rgb(255,0,0)','rgb(128,0,128)','rgb(0,255,0)','rgb(255,150,0)','rgb(140,70,20)','rgb(128,128,128)','rgb(50,50,255)','rgb(0,0,255)','rgb(255,255,255)']
 
 var dataTable = document.querySelector('table')
 
-function fillDataArray (arr, id, func) {
-  for (let i=1; i<10; i++) {
+function getColumnData (index, func) {
+  let arr = []
+  for (let i=1; i<10; i++) { // change imax to number of table rows
     let row = dataTable.rows.item(i).cells
-    for (cell of row) {
-      if (cell.className === id) {
-        arr.push(func(parseFloat(cell.innerHTML)))
-      }
+    arr.push(func(parseFloat(row[index].innerHTML)))
     }
-  }
+  return arr
 }
 
-fillDataArray(sizes, 'size', Math.log)
-fillDataArray(distances, 'distance', x => 40*Math.log(x))
-fillDataArray(periods, 'period', x => parseFloat(x))
+var sizes = getColumnData(document.getElementById("size").cellIndex, Math.log)
+var distances = getColumnData(document.getElementById("distance").cellIndex, x => 40*Math.log(x))
+var periods = getColumnData(document.getElementById("period").cellIndex, x => parseFloat(x))
 
 // define the function to draw the sun
 var sun_size = Math.log(1391016)
@@ -84,7 +75,6 @@ function drawSun () {
 }
 
 // define initializing function
-
 function initialize() {
   ctx.fillStyle = 'rgba(0,0,0,0.25)';
   ctx.fillRect(0,0,width,height);
@@ -103,7 +93,6 @@ function initialize() {
 }
 
 // define loop that keeps drawing the scene constantly
-
 function loop() {
   ctx.fillStyle = 'rgba(0,0,0,0.25)';
   ctx.fillRect(0,0,width,height);

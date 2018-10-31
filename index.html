@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>The Planets</title>
-    <link href="styles/minimal-table.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <h1>The Planets</h1>
@@ -17,7 +17,6 @@
       </colgroup>
       <thead>
         <tr>
-          <th scope="col" colspan="2"></th>
           <th scope="col">Name</th>
           <th scope="col">Mass (10<sup>24</sup>kg)</th>
           <th id="size" scope="col">Diameter (km)</th>
@@ -33,15 +32,14 @@
       </thead>
       <tbody>
         <tr>
-          <th scope="rowgroup" rowspan="4" colspan="2">Terrestrial planets</th>
           <th scope="row">Mercury</th>
           <td>0.330</td>
-          <td class="size">4879</td>
+          <td>4879</td>
           <td>5427</td>
           <td>3.7</td>
           <td>4222.6</td>
-          <td class="period">87.97</td>
-          <td class="distance">57.9</td>
+          <td>87.97</td>
+          <td>57.9</td>
           <td>167</td>
           <td>0</td>
           <td>Closest to the sun</td>
@@ -49,12 +47,12 @@
         <tr>
           <th scope="row">Venus</th>
           <td>4.87</td>
-          <td class="size">12104</td>
+          <td>12104</td>
           <td>5423</td>
           <td>8.9</td>
           <td>2802.0</td>
-          <td class="period">224.70</td>
-          <td class="distance">108.2</td>
+          <td>224.70</td>
+          <td>108.2</td>
           <td>464</td>
           <td>0</td>
           <td></td>
@@ -62,12 +60,12 @@
         <tr>
           <th scope="row">Earth</th>
           <td>5.97</td>
-          <td class="size">12756</td>
+          <td>12756</td>
           <td>5514</td>
           <td>9.8</td>
           <td>24.0</td>
-          <td class="period">365.26</td>
-          <td class="distance">149.6</td>
+          <td>365.26</td>
+          <td>149.6</td>
           <td>15</td>
           <td>1</td>
           <td>Mostly harmless</td>
@@ -75,27 +73,25 @@
         <tr>
           <th scope="row">Mars</th>
           <td>0.642</td>
-          <td class="size">6792</td>
+          <td>6792</td>
           <td>3933</td>
           <td>3.7</td>
           <td>24.7</td>
-          <td class="period">686.98</td>
-          <td class="distance">227.9</td>
+          <td>686.98</td>
+          <td>227.9</td>
           <td>-65</td>
           <td>2</td>
           <td>Orange Planet</td>
         </tr>  
         <tr>
-          <th scope="rowgroup" rowspan="4">Jovian planets</th>
-          <th scope="rowgroup" rowspan="2">Gas Giants</th>
           <th scope="row">Jupiter</th>
           <td>1898</td>
-          <td class="size">142984</td>
+          <td>142984</td>
           <td>1326</td>
           <td>23.1</td>
           <td>9.9</td>
-          <td class="period">4332.82</td>
-          <td class="distance">778.6</td>
+          <td>4332.82</td>
+          <td>778.6</td>
           <td>-110</td>
           <td>67</td>
           <td></td>
@@ -103,26 +99,25 @@
         <tr>
           <th scope="row">Saturn</th>
           <td>568</td>
-          <td class="size">120536</td>
+          <td>120536</td>
           <td>687</td>
           <td>9.0</td>
           <td>10.7</td>
-          <td class="period">10755.70</td>
-          <td class="distance">1433.5</td>
+          <td>10755.70</td>
+          <td>1433.5</td>
           <td>-140</td>
           <td>62</td>
           <td>Lord of the Rings</td>
         </tr>  
         <tr>
-          <th scope="rowgroup" rowspan="2">Ice giants</th>
           <th scope="row">Uranus</th>
           <td>86.8</td>
-          <td class="size">51118</td>
+          <td>51118</td>
           <td>1271</td>
           <td>8.7</td>
           <td>17.2</td>
-          <td class="period">30687.15</td>
-          <td class="distance">2872.5</td>
+          <td>30687.15</td>
+          <td>2872.5</td>
           <td>-195</td>
           <td>27</td>
           <td></td>
@@ -130,32 +125,31 @@
         <tr>
           <th scope="row">Neptune</th>
           <td>102</td>
-          <td class="size">49528</td>
+          <td>49528</td>
           <td>1638</td>
           <td>11.0</td>
           <td>16.1</td>
-          <td class="period">60190.03</td>
-          <td class="distance">4495.1</td>
+          <td>60190.03</td>
+          <td>4495.1</td>
           <td>-200</td>
           <td>14</td>
           <td></td>
         </tr>
         <tr>
-          <th scope="rowgroup" colspan="2">Dwarf planets</th>
           <th scope="row">Pluto</th>
           <td>0.0146</td>
-          <td class="size">2370</td>
+          <td>2370</td>
           <td>2095</td>
           <td>0.7</td>
           <td>153.3</td>
-          <td class="period">90631.02</td>
-          <td class="distance">5906.4</td>
+          <td>90631.02</td>
+          <td>5906.4</td>
           <td>-225</td>
           <td>5</td>
           <td>The 9th Planet, always and forever</td>
         </tr>    
       </tbody>
     </table>
-    <script src="scripts/planets.js"></script>
+    <script src="planets.js"></script>
   </body>
 </html>
