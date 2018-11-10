@@ -46,6 +46,33 @@ Planet.prototype.update = function() {
 // define array to store planets and data
 var planets = []
 var dataTable = document.querySelector('table')
+var addBtn = document.querySelector('#add')
+var tableBody = document.querySelector('tbody')
+var inputRow = document.querySelector('.input')
+
+function getInputData () {
+  let data = []
+  for (let i=0; i<inputRow.children.length-1;i++) {
+    data.push(inputRow.children[i].children[0].value)
+  }
+  return data
+}
+
+function addPlanet () {
+  let data = getInputData()
+  let newRow = document.createElement('tr')
+  let newHead = document.createElement('th')
+  newHead.scope = 'row'
+  newHead.innerHTML = data[0]
+  newRow.appendChild(newHead)
+  let newCell
+  for (let i=1; i<data.length; i++) {
+    newCell = document.createElement('td')
+    newCell.innerHTML = data[i]
+    newRow.appendChild(newCell)
+  }
+  tableBody.insertBefore(newRow, inputRow)
+}
 
 function getColumnData (index) {
   let arr = []
