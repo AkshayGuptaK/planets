@@ -1,12 +1,10 @@
 // setup canvas
 var canvas = document.querySelector('canvas')
 var ctx = canvas.getContext('2d')
-
 var width = canvas.width = window.innerWidth
 var height = canvas.height = window.innerHeight
 
-// Math helpter functions
-
+// Math helper functions
 function random(min,max) {
   var num = Math.floor(Math.random()*(max-min)) + min
   return num
@@ -47,11 +45,18 @@ Planet.prototype.update = function() {
 
 // define array to store planets and data
 var planets = []
-var colors = ['rgb(255,0,0)','rgb(128,0,128)','rgb(0,255,0)','rgb(255,150,0)','rgb(140,70,20)','rgb(128,128,128)','rgb(50,50,255)','rgb(0,0,255)','rgb(255,255,255)']
-
 var dataTable = document.querySelector('table')
 
-function getColumnData (index, func) {
+function getColumnData (index) {
+  let arr = []
+  for (let i=1; i<10; i++) { // change imax to number of table rows
+    let row = dataTable.rows.item(i).cells
+    arr.push(row[index].innerHTML)
+  }
+  return arr
+}
+
+function getNumColumnData (index, func) {
   let arr = []
   for (let i=1; i<10; i++) { // change imax to number of table rows
     let row = dataTable.rows.item(i).cells
@@ -60,9 +65,10 @@ function getColumnData (index, func) {
   return arr
 }
 
-var sizes = getColumnData(document.getElementById("size").cellIndex, Math.log)
-var distances = getColumnData(document.getElementById("distance").cellIndex, x => 40*Math.log(x))
-var periods = getColumnData(document.getElementById("period").cellIndex, x => parseFloat(x))
+var sizes = getNumColumnData(document.getElementById("size").cellIndex, Math.log)
+var distances = getNumColumnData(document.getElementById("distance").cellIndex, x => 40*Math.log(x))
+var periods = getNumColumnData(document.getElementById("period").cellIndex, x => parseFloat(x))
+var colors = getColumnData(document.getElementById("color").cellIndex)
 
 // define the function to draw the sun
 var sun_size = Math.log(1391016)
