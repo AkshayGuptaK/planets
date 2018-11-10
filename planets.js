@@ -50,6 +50,11 @@ var addBtn = document.querySelector('#add')
 var tableBody = document.querySelector('tbody')
 var inputRow = document.querySelector('.input')
 
+var distanceIndex = document.getElementById("distance").cellIndex
+var sizeIndex = document.getElementById("size").cellIndex
+var periodIndex = document.getElementById("period").cellIndex
+var colorIndex = document.getElementById("color").cellIndex
+
 function getInputData () {
   let data = []
   for (let i=0; i<inputRow.children.length-1;i++) {
@@ -72,6 +77,15 @@ function addPlanet () {
     newRow.appendChild(newCell)
   }
   tableBody.insertBefore(newRow, inputRow)
+
+  let planet = new Planet(
+    40*Math.log(data[distanceIndex]),
+    random(0, 2*Math.PI),
+    Math.log(data[sizeIndex]),
+    data[periodIndex],
+    data[colorIndex]
+  )
+  planets.push(planet)
 }
 
 function getColumnData (index) {
@@ -92,11 +106,6 @@ function getNumColumnData (index, func) {
   return arr
 }
 
-var sizes = getNumColumnData(document.getElementById("size").cellIndex, Math.log)
-var distances = getNumColumnData(document.getElementById("distance").cellIndex, x => 40*Math.log(x))
-var periods = getNumColumnData(document.getElementById("period").cellIndex, x => parseFloat(x))
-var colors = getColumnData(document.getElementById("color").cellIndex)
-
 // define the function to draw the sun
 var sun_size = Math.log(1391016)
 
@@ -109,17 +118,22 @@ function drawSun () {
 
 // define initializing function
 function initialize() {
+  let sizes = getNumColumnData(sizeIndex, Math.log)
+  let distances = getNumColumnData(distanceIndex, x => 40*Math.log(x))
+  let periods = getNumColumnData(periodIndex, x => parseFloat(x))
+  let colors = getColumnData(colorIndex)
+  
   ctx.fillStyle = 'rgba(0,0,0,0.25)';
   ctx.fillRect(0,0,width,height);
   drawSun()
-
+  let planet
   for (let i=0; i < 9; i++) {
-    var planet = new Planet(
+    planet = new Planet(
       distances[i],
       random(0, 2*Math.PI),
       sizes[i],
       periods[i],
-      colors[i],
+      colors[i]
     )
     planets.push(planet)
   }
